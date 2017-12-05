@@ -5,6 +5,7 @@
 - git clone https://github.com/zvolsky/django-jet.git
 - move/copy the jet/ folder into site-packages/
 - in addition I have to install django-grappelli too; without it django-jet isn't functional
+- include() calls in site urls.py should have just 1-st param for dj 2.0! (more parameters are probably possible, but incompatible with dj 1.11)
 
 ==========
 Django JET
