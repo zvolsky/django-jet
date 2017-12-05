@@ -1,3 +1,11 @@
+- Forked from HarryLafranc/django-jet at 2017-12-15 ie. during the time when hlf was making changes for dj 2.0.
+- Created branch zvolsky and made the default
+- In branch zvolsky I have more changes for dj 2.0, in time of writing just app_name=.. rows in urls.py
+- I use this to install django-jet to production instead of from pypi (as long django-jet isn't dj 2.0 ready).
+-- git clone https://github.com/zvolsky/django-jet.git
+-- move/copy the jet/ folder into site-packages/
+-- in addition I have to install django-grappelli too; without it django-jet isn't functional
+
 ==========
 Django JET
 ==========
