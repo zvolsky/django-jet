@@ -1,14 +1,8 @@
-**2018.07**
-- I try integrate geex-arts and others (ntcong + qwIvan at this time) into branch: dev
-- dev + changed README (added this top info) is in branch: zvolsky
+**2018.07** - zvolsky notes:
 
-**2017/2018 (obsolete)**
-- Forked from HarryLafranc/django-jet at 2017-12-15 ie. during the time when hlf was making changes for dj 2.0.
-- Created branch zvolsky and made the default
-- In branch zvolsky I have changes for dj 2.0, in time of writing just app_name=.. rows in urls.py
-- I use this to install django-jet to production instead of from pypi (as long django-jet isn't dj 2.0 ready):
-- pip install git+https://github.com/zvolsky/django-jet.git
-- include() calls in site urls.py should have just 1-st param for dj 2.0! (more parameters are probably possible, but incompatible with dj 1.11 usage)
+* I try integrate geex-arts and others (ntcong + qwIvan at this time) into branch: dev
+* dev + changed README (added this top info) is in branch: zvolsky
+* pip install git+https://github.com/zvolsky/django-jet.git
 
 ==========
 Django JET
