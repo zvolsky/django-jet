@@ -26,14 +26,16 @@ var cssProcessors = [
 ];
 
 gulp.task('scripts', function() {
-    return browserify('./jet/static/jet/js/src/main.js')
+    return browserify({entries: './jet/static/jet/js/src/main.js', debug: true})
         .bundle()
         .on('error', function(error) {
             console.error(error);
         })
         .pipe(source('bundle.min.js'))
         .pipe(buffer())
+        .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(uglify())
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./jet/static/jet/js/build/'));
 });
 
