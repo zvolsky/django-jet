@@ -1,7 +1,7 @@
 **2018.07** - zvolsky notes:
 
 * I try integrate geex-arts and others (ntcong + qwIvan at this time) into branch: dev
-* dev + changed README (added this top info) is in branch: zvolsky
+* branch zvolsky contains dev + sourcemap for js debugging + changed README (added this top info)
 * pip install git+https://github.com/zvolsky/django-jet.git
 
 ==========
