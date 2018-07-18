@@ -1,8 +1,10 @@
 **2018.07** - zvolsky notes:
 
 * I try integrate geex-arts and others (ntcong + qwIvan at this time) into branch: dev
-* branch zvolsky contains dev + sourcemap for js debugging + changed README (added this top info)
+* branch zvolsky in addition to dev contains: sourcemap for js debugging + removed SelectFilter2.js (broken multiselects in Dj2.0)+ changed README (added this top info)
+* I'm sorry, I don't run any tests
 * pip install git+https://github.com/zvolsky/django-jet.git
+* licence: AGPL (or commercial licence from the original author (geex-arts?))
 
 ==========
 Django JET
