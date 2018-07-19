@@ -1,5 +1,6 @@
 import datetime
 import json
+import django
 from django.template import Context
 from django.utils import translation
 from jet import settings
@@ -210,6 +211,12 @@ def get_model_queryset(admin_site, model, request, preserved_filters=None):
     list_select_related = model_admin.get_list_select_related(request) \
         if hasattr(model_admin, 'get_list_select_related') else model_admin.list_select_related
 
+    if django.VERSION >= (2, 1):
+        sortable_by = model_admin.get_sortable_by(request)
+        changelist_kwargs = {'sortable_by': sortable_by}
+    else:
+        changelist_kwargs = {}
+
     actions = model_admin.get_actions(request)
     if actions:
         list_display = ['action_checkbox'] + list(list_display)
@@ -220,7 +227,7 @@ def get_model_queryset(admin_site, model, request, preserved_filters=None):
         cl = ChangeList(
             request, model, list_display, list_display_links, list_filter, model_admin.date_hierarchy, search_fields,
             list_select_related, model_admin.list_per_page, model_admin.list_max_show_all, model_admin.list_editable,
-            model_admin)
+            model_admin, **changelist_kwargs)
 
         queryset = cl.get_queryset(request)
     except IncorrectLookupParameters:
