@@ -1,7 +1,10 @@
 **2018.07** - zvolsky notes:
 
-* I try integrate geex-arts and others (ntcong + qwIvan at this time) into branch: dev
-* branch zvolsky in addition to dev contains: sourcemap for js debugging + removed SelectFilter2.js (broken multiselects in Dj2.0)+ changed README (added this top info)
+* I try integrate geex-arts and others (ntcong + qwIvan at this time) into branch: dev; my (zvolsky) changes in dev are:
+  * sourcemap for js debugging
+  * removed SelectFilter2.js (repairs broken multiselects in Dj2.0) [need watching/testing]
+  * fixed for dj2.1 sortable_by
+* branch zvolsky just adds a changed README (added this top info)
 * I'm sorry, I don't run any tests
 * pip install git+https://github.com/zvolsky/django-jet.git
 * licence: AGPL (or commercial licence from the original author (geex-arts?))
