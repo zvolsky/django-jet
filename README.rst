@@ -1,7 +1,10 @@
 **2018.07** - zvolsky notes:
 
-* I try integrate geex-arts and others (ntcong + qwIvan at this time) into branch: dev; my (zvolsky) changes in dev are:
-   * sourcemap for js debugging
+* I try integrate geex-arts and others (ntcong + qwIvan at this time) into branch: dev
+* My (zvolsky) changes into dev are:
+   * package.json and bundle.min.js are updated to latest (2018-07) acceptable packages versions (which don't require jet js changes)
+   * this includes jQuery update to 3.3.1 (check the jQuery variable: console.log(jQuery.fn.jquery);)
+   * sourcemap bundle.min.js.map for js debugging
    * removed SelectFilter2.js (repairs broken multiselects in Dj2.0) [need watching/testing]
    * fixed for dj2.1 sortable_by
 
