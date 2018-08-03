@@ -1,0 +1,14 @@
+github.com/zvolsky/django-jet
+2018-08-03
+
+I'm not sure but it looks so,
+that in original (geex-arts?) django-jet jquery-ui run from fallback CDN, thanks the base.html and django-ajax-selects.
+
+Please see base.html. Js first loads from bundle.min.js incl. jquery and jquery-ui.
+Then the extrahead block will reload(!) jQuery variable and destroy jQuery.ui.
+django-ajax-selects later in same extrahead block reloads jQuery.ui (v 1.10) using CDN thanks its js/bootstrap.js.
+You can prevent this fallback with Django setting AJAX_SELECT_BOOTSTRAP=False, however jquery-ui dependent things like autocomplete would fail.
+
+Because the behaviour above (if I am correct) is strange,
+I decided to use the AJAX_SELECT_BOOTSTRAP=False setting and fix jquery-ui 1.11.4 in base.html after the extrahead block.
+I am not able gulp/browserify the bundle with possibility of external require(), so I use a duplicate of jquery-ui :(
