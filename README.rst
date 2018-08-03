@@ -7,6 +7,7 @@
    * sourcemap bundle.min.js.map for js debugging
    * removed SelectFilter2.js (repairs broken multiselects in Dj2.0) [need watching/testing]
    * fixed for dj2.1 sortable_by
+   * partialy fixed strange django-ajax-selects fallback: reload jquery-ui from CDN (v11->v10)
 
 * branch zvolsky just adds a changed README (added this top info)
 * I'm sorry, I don't run any tests
