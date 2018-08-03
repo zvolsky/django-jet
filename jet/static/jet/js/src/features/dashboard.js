@@ -5,6 +5,9 @@ var t = require('../utils/translate');
 
 require('jquery-ui/ui/core');
 require('jquery-ui/ui/widget');
+require('jquery-ui/ui/position');
+require('jquery-ui/ui/menu');
+require('jquery-ui/ui/autocomplete');
 require('jquery-ui/ui/mouse');
 require('jquery-ui/ui/draggable');
 require('jquery-ui/ui/droppable');
