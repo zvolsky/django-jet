@@ -3,7 +3,8 @@
 * I try integrate geex-arts and others (ntcong + qwIvan at this time) into branch: dev
 * My (zvolsky) changes into dev are:
    * package.json and bundle.min.js are updated to latest (2018-07) acceptable packages versions (which don't require jet js changes)
-   * this includes jQuery update to 3.3.1 (check the jQuery variable: console.log(jQuery.fn.jquery);)
+   * internal jQuery in bundle.min.js is 1.12.4 (jQuery-ui 1.11.4 with jQuery 3.x will fail)
+   * external jQuery 3.3.1 can be added (check the jQuery variable: console.log(jQuery.fn.jquery);)
    * sourcemap bundle.min.js.map for js debugging
    * removed SelectFilter2.js (repairs broken multiselects in Dj2.0) [need watching/testing]
    * fixed for dj2.1 sortable_by
