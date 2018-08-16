@@ -39,17 +39,25 @@
 <!-- extrahead section reloads jQuery which will destroy jQuery-ui :(
      without AJAX_SELECT_BOOTSTRAP=False setting, django-ajax-select will fallback to load other (old) jQuery-ui from CDN
      zvolsky: I prefer prevent this (by using of the setting) and I will correct jQuery-ui and ajax_select initialization now
-              I was able to use the original (geex-arts) 1.11.4 version only
+
+repair some damages from extrahead section
 -->
-<script type="text/javascript" src="/static/jquery-ui/js/jquery-ui.min.js"></script>
-<!--
-  <script>require('jquery-ui');</script>  # TODO: probably it could be rewritten using browserify external to reuse the packed jQuery-ui
-  <script
-      src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"
-      integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw="
-      crossorigin="anonymous"></script>   # from CDN
--->
+<script type="text/javascript" src="{% static 'jquery-ui/js/jquery-ui.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'jquery-ui/css/jquery-ui.min.css' %}" />
 <script type="text/javascript" src="/static/ajax_select/js/ajax_select.js"></script>
+
+<!--
+  zvolsky: I was not able eliminate the jQuery duplicate: v1.12.4 from bundle and v3.3.1 from contrib/admin
+      # TODO: maybe it could be eliminated using browserify + require() to reuse the jQuery-ui from bundle ?
+  always make $===jQuery===django.jQuery the newest one and having jQuery.ui
+  jet.jQuery stays v1.x from bundle
+  note that in easy forms (non grid or edit) original django.jQuery is missing and so $===jQuery===django.jQuery will be v1.12.4
+    1.12 is relative new version so usually this is no problem; if you want force the 3.x add this to your particular template:
+      <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.min.js' %}"></script>
+-->
+<script>
+  $ = jQuery = django.jQuery = django.jQuery || jQuery || jet.jQuery;  // jet.jQuery and .ui (can) have older version
+</script>
 
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
