@@ -57,6 +57,9 @@ repair some damages from extrahead section
 -->
 <script>
   $ = jQuery = django.jQuery = django.jQuery || jQuery || jet.jQuery;  // jet.jQuery and .ui (can) have older version
+  if (jet.jQuery.ui !== $.ui) {
+    jet.jQuery.ui = $.ui;
+  }
 </script>
 
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
