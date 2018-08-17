@@ -50,9 +50,9 @@ RelatedPopups.prototype = {
                         }
 
                         // zvolsky: hack to go well when select will change later to available/chosen widget
-                        try {
+                        if ($row.find('select').length > 1) {
                             $selectTo = $row.find('select:last');
-                        } catch (err) {
+                        } else {
                             $selectTo = null;
                         }
 
