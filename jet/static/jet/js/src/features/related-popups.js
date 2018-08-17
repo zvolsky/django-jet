@@ -49,7 +49,14 @@ RelatedPopups.prototype = {
                             href += (href.indexOf('?') == -1) ? '?_popup=1' : '&_popup=1';
                         }
 
-                        self.showPopup($select, href);
+                        // zvolsky: hack to go well when select will change later to available/chosen widget
+                        try {
+                            $selectTo = $row.find('select:last');
+                        } catch (err) {
+                            $selectTo = null;
+                        }
+
+                        self.showPopup($select, href, $selectTo);
                     }
                 });
             });
@@ -98,14 +105,16 @@ RelatedPopups.prototype = {
             self.closePopup();
         });
     },
-    showPopup: function($input, href) {
+    showPopup: function($input, href, $inputTo) {
+        $inputTo = $inputTo || null;  // hack zvolsky, see comment above
         var $document = $(window.top.document);
         var $container = $document.find('.related-popup-container');
         var $loading = $container.find('.loading-indicator');
         var $body = $document.find('body');
         var $popup = $('<div>')
             .addClass('related-popup')
-            .data('input', $input);
+            .data('input', $input)
+            .data('inputTo', $inputTo);  // hack zvolsky, see comment above
         var $iframe = $('<iframe>')
             .attr('src', href)
             .on('load', function() {
@@ -162,6 +171,7 @@ RelatedPopups.prototype = {
     },
     processPopupResponse: function($popup, response) {
         var $input = $popup.data('input');
+        var $inputTo = $popup.data('inputTo');  // hack zvolsky, see comment above
 
         switch (response.action) {
             case 'change':
@@ -194,12 +204,18 @@ RelatedPopups.prototype = {
                         .val(response.value)
                         .html(response.obj);
 
-                    $input.append($option);
-                    $option.attr('selected', true);
+                    if ($inputTo) {
+                        $option.attr('title', response.obj);
+                        $inputTo.append($option);  // hack zvolsky, see comment above
+                          // there is still small issue: new item will disapear when deselected :(
+                    } else {
+                        $input.append($option);
+                        $option.attr('selected', true);
 
-                    $input
-                        .trigger('change')
-                        .trigger('select:init');
+                        $input
+                            .trigger('change')
+                            .trigger('select:init');
+                    }
                 } else if ($input.is('input.vManyToManyRawIdAdminField') && $input.val()) {
                     $input.val($input.val() + ',' + response.value);
                 } else if ($input.is('input')) {
