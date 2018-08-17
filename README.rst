@@ -1,4 +1,4 @@
-**2018.07** - zvolsky notes:
+**2018.08** - zvolsky notes:
 
 * I try integrate geex-arts and others (ntcong + qwIvan at this time) into branch: dev
 * My (zvolsky) changes into dev are:
@@ -10,6 +10,7 @@
    * removed SelectFilter2.js (repairs broken multiselects in Dj2.0) [need watching/testing]
    * fixed for dj2.1 sortable_by
    * partialy fixed strange django-ajax-selects fallback: reload jquery-ui from CDN (v11->v10)
+   * hack/fix to go well with [+] in available/chosen widgets
 
 * branch zvolsky just adds a changed README (added this top info)
 * I'm sorry, I don't run any tests
