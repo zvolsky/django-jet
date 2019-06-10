@@ -83,7 +83,7 @@ def get_app_list(context, order=True):
                     'perms': perms,
                     'model_name': model._meta.model_name
                 }
-                if perms.get('change', False):
+                if perms.get('change', False) or perms.get('view', False):  # https://github.com/geex-arts/django-jet/pull/380/files
                     try:
                         model_dict['admin_url'] = reverse('admin:%s_%s_changelist' % info, current_app=admin_site.name)
                     except NoReverseMatch:
