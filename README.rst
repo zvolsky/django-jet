@@ -8,9 +8,10 @@
    * you can force v3.3.1 in particular template: <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.min.js' %}"></script> 
    * sourcemap bundle.min.js.map for js debugging
    * removed SelectFilter2.js (repairs broken multiselects in Dj2.0) [need watching/testing]
-   * fixed for dj2.1 sortable_by
+   * fixed for dj2.1 sortable_by  # solved later in upstream too: 2019-06-10 my solution replaced from upstream
    * partialy fixed strange django-ajax-selects fallback: reload jquery-ui from CDN (v11->v10)
    * hack/fix to go well with [+] in available/chosen widgets
+   * permission view podle https://github.com/geex-arts/django-jet/pull/380/files
 
 * branch zvolsky just adds a changed README (added this top info)
 * I'm sorry, I don't run any tests
