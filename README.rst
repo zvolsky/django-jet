@@ -2,11 +2,12 @@
 
 * I try integrate geex-arts and others (ntcong + qwIvan at this time) into branch: dev
 * My (zvolsky) changes into dev are:
-   * package.json and bundle.min.js are updated to latest (2018-07) versions where possible (where jet js changes weren't required)
+ * package.json and bundle.min.js are updated to latest (2018-07) versions where possible (where jet js changes weren't required)
    * jet.jQuery is always present: v1.12.4
    * $===jQuery===django.jQuery is always present: v3.3.1 where original django.jQuery; otherwise v1.12.4 - see base.html code ad comments
-   * you can force v3.3.1 in particular template: <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.min.js' %}"></script> 
+   * you can force v3.3.1 in particular template: <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.min.js' %}"></script> (???)
    * sourcemap bundle.min.js.map for js debugging
+   * select2/jet limited to change the DOM in admin only; <select> elements not inside 'div#content-main select' are not changed and so still working properly
    * removed SelectFilter2.js (repairs broken multiselects in Dj2.0) [need watching/testing]
    * fixed for dj2.1 sortable_by  # solved later in upstream too: 2019-06-10 my solution replaced from upstream
    * partialy fixed strange django-ajax-selects fallback: reload jquery-ui from CDN (v11->v10)
