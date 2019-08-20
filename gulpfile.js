@@ -26,7 +26,7 @@ var cssProcessors = [
 ];
 
 gulp.task('scripts', function() {
-    return browserify({entries: './jet/static/jet/js/src/main.js', debug: true})
+    return browserify('./jet/static/jet/js/src/main.js')
         .bundle()
         .on('error', function(error) {
             console.error(error);
@@ -52,7 +52,7 @@ gulp.task('styles', function() {
         .on('error', function(error) {
             console.error(error);
         })
-        .pipe(sourcemaps.write('./'))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('./jet/static/jet/css'));
 });
 
@@ -123,7 +123,8 @@ gulp.task('vendor-translations', function() {
 
 gulp.task('locales', shell.task('python manage.py compilemessages', { quiet: true }));
 
-gulp.task('build', ['scripts', 'styles', 'vendor-styles', 'vendor-translations', 'locales']);
+const { series } = require('gulp');
+gulp.task('build', series('scripts', 'styles', 'vendor-styles', 'vendor-translations', 'locales'));
 
 gulp.task('watch', function() {
     gulp.watch('./jet/static/jet/js/src/**/*.js', ['scripts']);
@@ -131,4 +132,4 @@ gulp.task('watch', function() {
     gulp.watch(['./jet/locale/**/*.po', './jet/dashboard/locale/**/*.po'], ['locales']);
 });
 
-gulp.task('default', ['build', 'watch']);
+gulp.task('default', series('build', 'watch'));

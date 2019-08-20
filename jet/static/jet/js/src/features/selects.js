@@ -222,7 +222,7 @@ Select2.prototype = {
             self.initSelect($select, DropdownAdapter);
         });
 
-        $('select').trigger('select:init');
+        $('div#content-main select').trigger('select:init');  // *mz: added div#content-main, to prevent damages in other select2 elements outside of Admin caused by Jet
 
         $('.inline-group').on('inline-group-row:added', function(e, $inlineItem) {
             $inlineItem.find('select').trigger('select:init');
